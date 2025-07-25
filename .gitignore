@@ -1,0 +1,6 @@
+# React Native
+node_modules/
+android/app/build/
+ios/Pods/
+.env
+*.log
