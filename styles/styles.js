@@ -17,9 +17,9 @@ export default StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 35,
-    position: 'absolute', // absolute signifie que le texte est affiché sans prendre compte des autres éléments donc pourra être affiché par dessus 
-    top: 75, // position de 75 pixels en partant du haut de l'écran
     fontWeight: 'bold',
+    marginTop: 60,
+    marginBottom: 80,
   },
   whiteText: {
     color: 'white',
@@ -47,12 +47,37 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   bottomButton: {
-    position: 'absolute',
+    position: 'absolute', // absolute signifie que peu importe si il y a autre chose au même endroit l'instance suivante se mettra à la place
     bottom: 70,
     alignSelf: 'center', // aligne l'instance, ici le bouton, au milieu sans tenir compte des règles données par le parent
     backgroundColor: 'white',
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 7,
+  },
+  displayTask: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    alignSelf: 'center',
+    marginVertical: 10,
+    padding: 20,
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center',
+    maxWidth: '70%',
+  },
+  taskButton: {
+    backgroundColor: '#eee',
+    borderRadius: 25,
+    width: 45,
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  taskRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
 });
