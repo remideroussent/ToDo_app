@@ -86,7 +86,6 @@ npm run android
 ```
 todo-app/
 ├── App.js                 # Main application component
-├── components/           # Reusable components
 ├── screens/             # Application screens
 ├── assets/              # Images, fonts, etc.
 ├── package.json         # Dependencies and scripts
