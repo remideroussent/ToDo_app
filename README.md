@@ -94,5 +94,20 @@ todo-app/
 ```
 
 ## What I Learned
-
 Through this project, I gained experience with:
+
+- **React Native fundamentals**
+- **State management with hooks**
+- **Mobile UI/UX design principles**
+- **Cross-platform development**
+- **Expo development workflow**
+- **Git version control**
+
+## Future Improvements
+
+- **🌙 Dark mode support**
+- **📊 Task statistics and analytics**
+- **🔔 Push notifications for reminders**
+- **💾 Data persistence with AsyncStorage**
+- **🎨 Custom themes and colors**
+- **📅 Due date functionality**
