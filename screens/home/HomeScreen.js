@@ -4,7 +4,7 @@ import styles from '../../styles/styles.js';
 export default function HomeScreen({navigation, tasks}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>My ToDo</Text>
+      <Text style={styles.title}>Tâches</Text>
       <FlatList
         data={tasks}
         keyExtractor={(item, index) => index.toString()}
@@ -21,7 +21,10 @@ export default function HomeScreen({navigation, tasks}) {
         style={styles.caracButton}
         onPress={() => navigation.navigate('AddTask')}>
           {/* appelle la navigation vers la page nommée AddTask*/}
-        <Text style={styles.buttonText}>+</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.buttonText, {fontSize: 40, lineHeight: 40}]}>+  </Text>
+          <Text style={styles.buttonText}> Ajoutez une tâche</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );
