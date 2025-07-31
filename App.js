@@ -7,7 +7,7 @@ import AddTaskScreen from './screens/addTask/AddTaskScreen'; // on importe le fi
 
 const Stack = createNativeStackNavigator(); // création d'une stack qui permet de pouvoir naviguer entre les différents écrans
 
-export default function App() { // default singifie que c'est la fonction principale appelée quand on appelle ce fichier
+export default function App() { // default signifie que c'est la fonction principale appelée quand on appelle ce fichier
   const [tasks, setTasks] = useState([]);
 
   const addTask = (taskName) => {
@@ -17,7 +17,7 @@ export default function App() { // default singifie que c'est la fonction princi
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         {/* gère la navigation générale (historique)*/}
-        <Stack.Navigator screenOptions={{headerStyle: {backgroundColor: 'black'}, headerTintColor: 'white', headerTitleStyle: {fontWeight: 'bold'},}}>
+        <Stack.Navigator screenOptions={{headerStyle: {backgroundColor: 'black'}, headerTintColor: '#5E5CE6', headerTitleStyle: {fontWeight: 'bold'},}}>
            {/* conteneur qui contient les écrans*/}
           <Stack.Screen name="Home" options={{headerShown: false}}>
             {props => <HomeScreen {...props} tasks={tasks} />}
@@ -27,7 +27,7 @@ export default function App() { // default singifie que c'est la fonction princi
           <Stack.Screen name="AddTask">
             {props => <AddTaskScreen {...props} addTask={addTask} />}
             {/* nous sommes obligés d'avoir cette syntaxe ici car on veut passer une prop personnalisé, ici addTask,*/}
-            {/*  les props de abse sont navigation et route qui sont contenues dans ...props */}
+            {/*  les props de base sont navigation et route qui sont contenues dans ...props */}
           </Stack.Screen>
           {/* 2ème écran, écran d'ajout de tâches avec son nom et sa fonction approprié en composant*/}
         </Stack.Navigator>
