@@ -15,7 +15,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
   },
   title: {
-    color: 'white',
+    color: '#5E5CE6',
     fontSize: 35,
     fontWeight: 'bold',
     marginTop: 60,
@@ -27,37 +27,38 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   caracButton: {
-    backgroundColor: 'white',
+    backgroundColor: '#1A1A1A',
     paddingVertical: 10, // taille du bouton en hauteur
     paddingHorizontal: 60, // taille du bouton en largeur
-    borderRadius: 7, // rondeur des bordures du bouton
+    borderRadius: 8, // rondeur des bordures du bouton
     position: 'absolute',
     bottom: 60,
   },
   buttonText: {
-    color: 'black',
-    fontWeight: 'bold', // texte mis en gras, toujours mettre le texte des boutons en gras
-    fontSize: 22,
+    color: '#5E5CE6',
+    //fontWeight: 'bold', // texte mis en gras, toujours mettre le texte des boutons en gras
+    fontSize: 20,
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: '#1A1A1A',
     paddingVertical: 10,
     paddingHorizontal: 60,
-    borderRadius: 7,
+    borderRadius: 8,
     textAlign: 'center',
+    color: '#ECECEC',
   },
   bottomButton: {
     position: 'absolute', // absolute signifie que peu importe si il y a autre chose au même endroit l'instance suivante se mettra à la place
-    bottom: 70,
+    bottom: 60,
     alignSelf: 'center', // aligne l'instance, ici le bouton, au milieu sans tenir compte des règles données par le parent
-    backgroundColor: 'white',
-    paddingVertical: 10,
-    paddingHorizontal: 50,
-    borderRadius: 7,
+    backgroundColor: '#1A1A1A',
+    paddingVertical: 7,
+    paddingHorizontal: 46,
+    borderRadius: 8,
   },
   displayTask: {
     backgroundColor: 'white',
-    borderRadius: 5,
+    borderRadius: 8,
     alignSelf: 'center',
     marginVertical: 10,
     padding: 20,
