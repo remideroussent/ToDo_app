@@ -5,7 +5,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'stretch',
   },
   addTaskContainer: {
     flex: 1,
@@ -20,6 +20,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 60,
     marginBottom: 80,
+    textAlign: 'center',
   },
   whiteText: {
     color: 'white',
@@ -33,6 +34,7 @@ export default StyleSheet.create({
     borderRadius: 8, // rondeur des bordures du bouton
     position: 'absolute',
     bottom: 60,
+    alignSelf: 'center',
   },
   buttonText: {
     color: '#5E5CE6',
@@ -55,17 +57,6 @@ export default StyleSheet.create({
     paddingHorizontal: 46,
     borderRadius: 8,
   },
-  displayTask: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    alignSelf: 'center',
-    marginVertical: 10,
-    padding: 20,
-    fontWeight: 'bold',
-    fontSize: 15,
-    textAlign: 'center',
-    maxWidth: '70%',
-  },
   taskButton: {
     backgroundColor: '#eee',
     borderRadius: 25,
@@ -75,10 +66,23 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginRight: 12,
   },
+  displayTask: {
+    color: '#ECECEC',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    fontFamily: 'Poppins',
+    fontSize: 15,
+    textAlign: 'left',
+    flex: 1,
+  },
   taskRow: {
+    backgroundColor: '#1A1A1A',
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'center',
+    alignSelf: 'stretch',
+    borderRadius: 8,
+    marginBottom: 2,
+    marginHorizontal: 0,
   },
   noTask: {
     color: 'white',
@@ -87,5 +91,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Poppins',
     width: '90%', // revient à la ligne quand on occupe 90% de l'espace
+    alignSelf: 'center',
   },
 });
