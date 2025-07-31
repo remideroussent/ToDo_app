@@ -4,12 +4,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'; // 
 import { GestureHandlerRootView } from 'react-native-gesture-handler'; // permet à l'application de gérer les gestes tactiles complexes (scroll, swipe, etc.)
 import HomeScreen from './screens/home/HomeScreen'; // on importe le fichier de la page d'accueil
 import AddTaskScreen from './screens/addTask/AddTaskScreen'; // on importe le fichier de la page où on ajoute des tâches
+import { useFonts } from 'expo-font'; // on importe les fonts pour les charger
 
 const Stack = createNativeStackNavigator(); // création d'une stack qui permet de pouvoir naviguer entre les différents écrans
 
 export default function App() { // default signifie que c'est la fonction principale appelée quand on appelle ce fichier
+  const [fontsLoaded] = useFonts({
+    Poppins: require('./assets/fonts/Poppins/Poppins-Black.ttf'), // on donne le lieu où est stocké la font que l'on souhaite charger
+  })
   const [tasks, setTasks] = useState([]);
 
+  if (!fontsLoaded){
+    return null; // si on n'arrive pas à charger les fonts alors on ne fait juste rien et on aura la font système de base
+  }
   const addTask = (taskName) => {
     setTasks([...tasks, {name: taskName}]);
   };

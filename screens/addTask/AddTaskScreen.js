@@ -20,6 +20,7 @@ export default function AddTaskScreen({navigation, addTask}) {
         style={styles.input}
         placeholder='Nom'
         placeholderTextColor='grey'
+        keyboardAppearance='dark'
         value={taskName}
         onChangeText={setTaskName}
       />

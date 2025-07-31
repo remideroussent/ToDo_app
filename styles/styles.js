@@ -4,7 +4,7 @@ export default StyleSheet.create({
   container: { // container est le nom du style mais on peut le nommer comme on veut
     flex: 1,
     backgroundColor: 'black',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   addTaskContainer: {
@@ -36,7 +36,6 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: '#5E5CE6',
-    //fontWeight: 'bold', // texte mis en gras, toujours mettre le texte des boutons en gras
     fontSize: 20,
   },
   input: {
@@ -80,5 +79,13 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
+  },
+  noTask: {
+    color: 'white',
+    top: 180,
+    fontSize: 18,
+    textAlign: 'center',
+    fontFamily: 'Poppins',
+    width: '90%', // revient à la ligne quand on occupe 90% de l'espace
   },
 });
