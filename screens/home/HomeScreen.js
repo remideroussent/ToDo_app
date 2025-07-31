@@ -14,9 +14,6 @@ export default function HomeScreen({navigation, tasks}) {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View style={styles.taskRow}>
-              <TouchableOpacity style={styles.taskButton} onPress={() => null}>
-                <Text style={{fontSize: 22}}>✔️</Text>
-              </TouchableOpacity>
               <Text style={styles.displayTask}>{item.name}</Text>
             </View>
           )}

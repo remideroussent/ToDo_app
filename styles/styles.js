@@ -34,6 +34,15 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 60,
   },
+  displayTask: {
+    color: '#ECECEC',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'left',
+    flex: 1, // prend toute la largeur disponible dans le row
+  },
   buttonText: {
     color: '#5E5CE6',
     fontSize: 20,
@@ -55,17 +64,6 @@ export default StyleSheet.create({
     paddingHorizontal: 46,
     borderRadius: 8,
   },
-  displayTask: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    alignSelf: 'center',
-    marginVertical: 10,
-    padding: 20,
-    fontWeight: 'bold',
-    fontSize: 15,
-    textAlign: 'center',
-    maxWidth: '70%',
-  },
   taskButton: {
     backgroundColor: '#eee',
     borderRadius: 25,
@@ -78,7 +76,11 @@ export default StyleSheet.create({
   taskRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'center',
+    alignSelf: 'stretch',
+    backgroundColor: '#1A1A1A', // fond sur toute la largeur
+    borderRadius: 8,
+    marginBottom: 10, // pour espacer les tâches
+    marginHorizontal: 0, // pour bien coller aux bords si besoin
   },
   noTask: {
     color: 'white',
