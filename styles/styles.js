@@ -19,7 +19,7 @@ export default StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
     marginTop: 60,
-    marginBottom: 80,
+    marginBottom: 50,
     textAlign: 'center',
   },
   whiteText: {
@@ -35,6 +35,24 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 60,
     alignSelf: 'center',
+  },
+  notDoneButton: {
+    borderWidth: 2,
+    borderColor: '#ECECEC',
+    backgroundColor: 'transparent',
+    width: 30,
+    height: 30,
+    borderRadius: 20,
+    marginLeft: 15,
+  },
+  doneButton: {
+    borderWidth: 2,
+    borderColor: '#ECECEC',
+    backgroundColor: '#5E5CE6',
+    width: 30,
+    height: 30,
+    borderRadius: 20,
+    marginLeft: 15,
   },
   buttonText: {
     color: '#5E5CE6',
