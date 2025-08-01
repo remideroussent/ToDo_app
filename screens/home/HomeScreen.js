@@ -15,12 +15,14 @@ export default function HomeScreen({navigation, tasks}) {
       }
     });
   };
+  let nb_done_tasks = pressedIndex.length;
+  let nb_doing_tasks = tasks.length - pressedIndex.length;
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tâches</Text>
       {/* on utilise un ternaire pour afficher un bout de texte quand nous n'avons pas de tâches et afficher les tâches sinon*/}
-      <View style={{flex: 1, paddingBottom: 127}}>
+      <View style={{flex: 1, paddingBottom: 145}}>
         {/* on met la flatlist dans une view pour pouvoir lui appliquer un style et que les tâches ne débordent pas sur le bouton*/}
         {tasks.length === 0 ? (
           <Text style={styles.noTask}>Vous n'avez actuellement aucune tâche en cours. Au boulot !📝</Text>
@@ -36,7 +38,36 @@ export default function HomeScreen({navigation, tasks}) {
             )}
           />
         )}
+        <Display_nb_tasks nb_done_tasks={nb_done_tasks} nb_doing_tasks={nb_doing_tasks} tasks={tasks}/>
       </View>
+      <Button_add_tasks navigation={navigation}/>
+    </View>
+  );
+}
+
+function Display_nb_tasks({nb_done_tasks, nb_doing_tasks, tasks}) {
+  if (tasks.length === 0)
+    return null;
+
+  return (
+      <View style={{marginTop: 15}}>
+        {nb_doing_tasks <= 1 ? (
+          <Text style={{color: 'white', textAlign: 'center'}}>Vous avez {nb_doing_tasks} tâche encore en cours. Au boulot !</Text>
+        ) : (
+          <Text style={{color: 'white', textAlign: 'center'}}>Vous avez {nb_doing_tasks} tâches encore en cours. Au boulot !</Text>
+        )}
+        {(nb_done_tasks === 1 || nb_done_tasks === 0) ? (
+          <Text style={{color: 'white', textAlign: 'center', marginTop: 10}}>Vous avez fini {nb_done_tasks} tâche. Bien joué !</Text>
+        ) : (
+          <Text style={{color: 'white', textAlign: 'center', marginTop: 10}}>Vous avez fini {nb_done_tasks} tâches. Bien joué !</Text>
+        )}
+      </View>
+  );
+}
+
+function Button_add_tasks({navigation}) {
+  return (
+    <View>
       <TouchableOpacity
         style={styles.caracButton}
         onPress={() => navigation.navigate('AddTask')}>
