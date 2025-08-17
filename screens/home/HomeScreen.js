@@ -39,8 +39,10 @@ export default function HomeScreen({navigation, tasks}) {
           />
         )}
         <Display_nb_tasks nb_done_tasks={nb_done_tasks} nb_doing_tasks={nb_doing_tasks} tasks={tasks}/>
+        {/* ici on appelle la fonction Display_nb_tasks*/}
       </View>
       <Button_add_tasks navigation={navigation}/>
+      {/* ici on appelle la fonction Button_add_tasks*/}
     </View>
   );
 }

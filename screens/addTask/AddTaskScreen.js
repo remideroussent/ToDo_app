@@ -7,7 +7,7 @@ export default function AddTaskScreen({navigation, addTask}) {
   const [message, setMessage] = useState('');
 
   const handleAddTask = () => {
-    if (taskName.trim() !== ''){
+    if (taskName.trim() !== ''){ // vérification si c'est une chaîne vide ou non
       addTask(taskName);
       navigation.goBack();
     } else {
