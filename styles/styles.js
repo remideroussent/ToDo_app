@@ -31,7 +31,7 @@ export default StyleSheet.create({
     backgroundColor: '#1A1A1A',
     paddingVertical: 10, // taille du bouton en hauteur
     paddingHorizontal: 60, // taille du bouton en largeur
-    borderRadius: 8, // rondeur des bordures du bouton
+    borderRadius: 8, // largeur des bordures du bouton
     position: 'absolute',
     bottom: 60,
     alignSelf: 'center',
@@ -53,6 +53,16 @@ export default StyleSheet.create({
     height: 30,
     borderRadius: 20,
     marginLeft: 15,
+  },
+  doneTask: {
+    textDecorationLine: 'line-through',
+    color: '#888',
+  },
+  doneIcon: {
+    color: 'white',
+    fontSize: 16,
+    lineHeight: 27,
+    textAlign: 'center',
   },
   buttonText: {
     color: '#5E5CE6',

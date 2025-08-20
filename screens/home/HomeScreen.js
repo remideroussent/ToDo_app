@@ -1,9 +1,14 @@
 import { View, Text, TouchableOpacity, FlatList, Button } from 'react-native';
 import styles from '../../styles/styles.js';
 import { useState } from 'react';
+import { useAudioPlayer } from 'expo-audio';
+
+const audioSource = require("../../assets/audio/validation_audio.mp3"); // importe la source de l'audio que l'on veut utilisé
 
 export default function HomeScreen({navigation, tasks}) {
   const [pressedIndex, setPressedIndex] = useState([]);
+
+  const player = useAudioPlayer(audioSource); // utilise l'audio dans la variable player
 
   const indexPressed = (index) => {
     setPressedIndex(prev => { // prev représente l'ancien tableau avant le clique du boutton
@@ -11,7 +16,7 @@ export default function HomeScreen({navigation, tasks}) {
       if (alreadyPressed) {
         return prev.filter(i => i !== index); // renvoie un nouveau tableau avec tous les éléments différents d'index
       } else {
-        return [...prev, index]; // sinon on rajotue l'index à la fin de l'ancien tableau prev, ...prev concatène prev et index
+        return [...prev, index]; // sinon on rajoute l'index à la fin de l'ancien tableau prev, ...prev concatène prev et index
       }
     });
   };
@@ -25,15 +30,25 @@ export default function HomeScreen({navigation, tasks}) {
       <View style={{flex: 1, paddingBottom: 145}}>
         {/* on met la flatlist dans une view pour pouvoir lui appliquer un style et que les tâches ne débordent pas sur le bouton*/}
         {tasks.length === 0 ? (
-          <Text style={styles.noTask}>Vous n'avez actuellement aucune tâche en cours. Au boulot !📝</Text>
+          <Text style={styles.noTask}>Vous n'avez actuellement aucune tâche en cours.  Au boulot !📝</Text>
         ) : (
           <FlatList
             data={tasks}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item, index}) => (
               <View style={styles.taskRow}>
-                <TouchableOpacity style={[styles.notDoneButton, pressedIndex.includes(index) && styles.doneButton]} onPress={() => indexPressed(index)}></TouchableOpacity>
-                <Text style={styles.displayTask}>{item.name}</Text>
+                <TouchableOpacity style={[styles.notDoneButton, pressedIndex.includes(index) && styles.doneButton]} onPress={() => {
+                  const alreadyPressed = pressedIndex.includes(index);
+                  indexPressed(index);
+                  if (!alreadyPressed){
+                    player.play();
+                    player.seekTo(0)
+                  }
+                }}>
+                  {pressedIndex.includes(index) && <Text style={styles.doneIcon}>✓</Text>}
+                  {/* ajout d'une flèche de validation quand la tâche est marquée comme terminée*/}
+                </TouchableOpacity>
+                <Text style={[styles.displayTask, pressedIndex.includes(index) && styles.doneTask]}>{item.name}</Text>
               </View>
             )}
           />
@@ -54,14 +69,14 @@ function Display_nb_tasks({nb_done_tasks, nb_doing_tasks, tasks}) {
   return (
       <View style={{marginTop: 15}}>
         {nb_doing_tasks <= 1 ? (
-          <Text style={{color: 'white', textAlign: 'center'}}>Vous avez {nb_doing_tasks} tâche encore en cours. Au boulot !</Text>
+          <Text style={{color: 'white', textAlign: 'center'}}>Vous avez {nb_doing_tasks} tâche encore en cours</Text>
         ) : (
-          <Text style={{color: 'white', textAlign: 'center'}}>Vous avez {nb_doing_tasks} tâches encore en cours. Au boulot !</Text>
+          <Text style={{color: 'white', textAlign: 'center'}}>Vous avez {nb_doing_tasks} tâches encore en cours</Text>
         )}
         {(nb_done_tasks === 1 || nb_done_tasks === 0) ? (
-          <Text style={{color: 'white', textAlign: 'center', marginTop: 10}}>Vous avez fini {nb_done_tasks} tâche. Bien joué !</Text>
+          <Text style={{color: 'white', textAlign: 'center', marginTop: 10}}>Vous avez fini {nb_done_tasks} tâche</Text>
         ) : (
-          <Text style={{color: 'white', textAlign: 'center', marginTop: 10}}>Vous avez fini {nb_done_tasks} tâches. Bien joué !</Text>
+          <Text style={{color: 'white', textAlign: 'center', marginTop: 10}}>Vous avez fini {nb_done_tasks} tâches</Text>
         )}
       </View>
   );
