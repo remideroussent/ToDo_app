@@ -25,7 +25,7 @@ export default function HomeScreen({navigation, tasks}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tâches</Text>
+      <About_me_button_title navigation={navigation}/>
       {/* on utilise un ternaire pour afficher un bout de texte quand nous n'avons pas de tâches et afficher les tâches sinon*/}
       <View style={{flex: 1, paddingBottom: 145}}>
         {/* on met la flatlist dans une view pour pouvoir lui appliquer un style et que les tâches ne débordent pas sur le bouton*/}
@@ -60,6 +60,17 @@ export default function HomeScreen({navigation, tasks}) {
       {/* ici on appelle la fonction Button_add_tasks*/}
     </View>
   );
+}
+
+function About_me_button_title({navigation}) {
+  return (
+    <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+      <Text style={styles.title}>Tâches</Text>
+      <TouchableOpacity style={styles.aboutMeButton} onPress={() => navigation.navigate('About Me')}>
+        <Text style={{color: '#5E5CE6', fontWeight: 'bold', fontSize: 18}}>i</Text>
+      </TouchableOpacity>
+    </View>
+  )
 }
 
 function Display_nb_tasks({nb_done_tasks, nb_doing_tasks, tasks}) {
