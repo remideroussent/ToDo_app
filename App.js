@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'; // 
 import { GestureHandlerRootView } from 'react-native-gesture-handler'; // permet à l'application de gérer les gestes tactiles complexes (scroll, swipe, etc.)
 import HomeScreen from './screens/home/HomeScreen'; // on importe le fichier de la page d'accueil
 import AddTaskScreen from './screens/addTask/AddTaskScreen'; // on importe le fichier de la page où on ajoute des tâches
+import AboutMe from './screens/about_me/AboutMe'; // on importe le fichier about me
 import { useFonts } from 'expo-font'; // on importe les fonts pour les charger
 
 const Stack = createNativeStackNavigator(); // création d'une stack qui permet de pouvoir naviguer entre les différents écrans
@@ -37,6 +38,9 @@ export default function App() { // default signifie que c'est la fonction princi
             {/*  les props de base sont navigation et route qui sont contenues dans ...props */}
           </Stack.Screen>
           {/* 2ème écran, écran d'ajout de tâches avec son nom et sa fonction approprié en composant*/}
+          <Stack.Screen name="About Me">
+            {props => <AboutMe {...props} />}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
