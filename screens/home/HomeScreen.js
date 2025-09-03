@@ -20,8 +20,8 @@ export default function HomeScreen({navigation, tasks}) {
       }
     });
   };
-  let nb_done_tasks = pressedIndex.length;
-  let nb_doing_tasks = tasks.length - pressedIndex.length;
+  let nb_done_tasks = tasks.filter(task => task.done).length; // .filter crée un nouveau tableau avec seulement les tâches qui sont dites comme done
+  let nb_doing_tasks = tasks.length - nb_done_tasks;
 
   return (
     <View style={styles.container}>
@@ -37,18 +37,19 @@ export default function HomeScreen({navigation, tasks}) {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item, index}) => (
               <View style={styles.taskRow}>
-                <TouchableOpacity style={[styles.notDoneButton, pressedIndex.includes(index) && styles.doneButton]} onPress={() => {
+                <TouchableOpacity style={[styles.notDoneButton, item.done && styles.doneButton]} onPress={() => {
                   const alreadyPressed = pressedIndex.includes(index);
                   indexPressed(index);
-                  if (!alreadyPressed){
+                  if (!item.done){
                     player.play();
                     player.seekTo(0)
                   }
+                  done_task_organisation(tasks, index, pressedIndex, setPressedIndex);
                 }}>
-                  {pressedIndex.includes(index) && <Text style={styles.doneIcon}>✓</Text>}
+                  {item.done && <Text style={styles.doneIcon}>✓</Text>}
                   {/* ajout d'une flèche de validation quand la tâche est marquée comme terminée*/}
                 </TouchableOpacity>
-                <Text style={[styles.displayTask, pressedIndex.includes(index) && styles.doneTask]}>{item.name}</Text>
+                <Text style={[styles.displayTask, item.done && styles.doneTask]}>{item.name}</Text>
               </View>
             )}
           />
@@ -60,6 +61,26 @@ export default function HomeScreen({navigation, tasks}) {
       {/* ici on appelle la fonction Button_add_tasks*/}
     </View>
   );
+}
+
+function done_task_organisation(tasks, pressed_task_index, pressedIndex, setPressedIndex) {
+  let temp = [];
+
+  tasks[pressed_task_index].done = !tasks[pressed_task_index].done;
+  for (let i = pressed_task_index; i < tasks.length - 1; i++){ // on swap les tâches de la listes pour mettre la tâche marqué comme faites à la fin
+    temp = tasks[i];
+    tasks[i] = tasks[i + 1];
+    tasks[i + 1] = temp;
+  }
+  setPressedIndex(prev => {
+    const updated = [...prev]; // on fait une copie de l’ancien tableau
+    for (let j = 0; j < updated.length; j++) {
+      if (updated[j] === pressed_task_index) {
+        updated[j] = tasks.length - 1; // on déplace l’index pressé à la fin
+      }
+    }
+    return updated;
+  });
 }
 
 function About_me_button_title({navigation}) {

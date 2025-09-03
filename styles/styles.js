@@ -109,6 +109,7 @@ export default StyleSheet.create({
     fontFamily: 'Poppins',
     fontSize: 15,
     textAlign: 'left',
+    //marginRight: 25, // pour ensuite créer un bouton qui va servir de mettre en favori la tâche
     flex: 1,
   },
   taskRow: {
