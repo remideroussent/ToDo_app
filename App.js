@@ -19,7 +19,7 @@ export default function App() { // default signifie que c'est la fonction princi
     return null; // si on n'arrive pas à charger les fonts alors on ne fait juste rien et on aura la font système de base
   }
   const addTask = (taskName) => {
-    setTasks([...tasks, {name: taskName}]);
+    setTasks([...tasks, {name: taskName, done: false}]);
   };
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -28,7 +28,7 @@ export default function App() { // default signifie que c'est la fonction princi
         <Stack.Navigator screenOptions={{headerStyle: {backgroundColor: 'black'}, headerTintColor: '#5E5CE6', headerTitleStyle: {fontWeight: 'bold'},}}>
            {/* conteneur qui contient les écrans*/}
           <Stack.Screen name="Home" options={{headerShown: false}}>
-            {props => <HomeScreen {...props} tasks={tasks} />}
+            {props => <HomeScreen {...props} tasks={tasks} setTasks={setTasks}/>}
           </Stack.Screen>
           {/* écran d'accueil de l'application, 1er écran avec son nom et sa fonction approprié en composant*/}
           {/* headerShown masque le nom de la page, à faire seulement sur la page d'accueil sinon la flèche disparait aussi pour revenir en arrière*/}

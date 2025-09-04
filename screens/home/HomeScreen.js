@@ -5,7 +5,7 @@ import { useAudioPlayer } from 'expo-audio';
 
 const audioSource = require("../../assets/audio/validation_audio.mp3"); // importe la source de l'audio que l'on veut utilisé
 
-export default function HomeScreen({navigation, tasks}) {
+export default function HomeScreen({navigation, tasks, setTasks}) {
   const [pressedIndex, setPressedIndex] = useState([]);
 
   const player = useAudioPlayer(audioSource); // utilise l'audio dans la variable player
@@ -44,7 +44,7 @@ export default function HomeScreen({navigation, tasks}) {
                     player.play();
                     player.seekTo(0)
                   }
-                  done_task_organisation(tasks, index, pressedIndex, setPressedIndex);
+                  done_task_organisation(tasks, index, setTasks);
                 }}>
                   {item.done && <Text style={styles.doneIcon}>✓</Text>}
                   {/* ajout d'une flèche de validation quand la tâche est marquée comme terminée*/}
@@ -63,24 +63,16 @@ export default function HomeScreen({navigation, tasks}) {
   );
 }
 
-function done_task_organisation(tasks, pressed_task_index, pressedIndex, setPressedIndex) {
-  let temp = [];
-
+function done_task_organisation(tasks, pressed_task_index, setTasks) {
   tasks[pressed_task_index].done = !tasks[pressed_task_index].done;
-  for (let i = pressed_task_index; i < tasks.length - 1; i++){ // on swap les tâches de la listes pour mettre la tâche marqué comme faites à la fin
-    temp = tasks[i];
-    tasks[i] = tasks[i + 1];
-    tasks[i + 1] = temp;
-  }
-  setPressedIndex(prev => {
-    const updated = [...prev]; // on fait une copie de l’ancien tableau
-    for (let j = 0; j < updated.length; j++) {
-      if (updated[j] === pressed_task_index) {
-        updated[j] = tasks.length - 1; // on déplace l’index pressé à la fin
-      }
-    }
-    return updated;
+
+  // réordonner : en cours en haut, terminées en bas
+  tasks.sort((a, b) => {
+    if (a.done === b.done) return 0;
+    return a.done ? 1 : -1;
   });
+
+  setTasks([...tasks]); // met à jour le state global
 }
 
 function About_me_button_title({navigation}) {
