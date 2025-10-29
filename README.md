@@ -17,7 +17,7 @@ This is my very first mobile application! This project allowed me to learn the b
 
 - **React Native** - Cross-platform mobile development framework
 - **Expo** - Development platform that simplifies React Native app creation
-- **JavaScript/TypeScript** - Programming languages
+- **JavaScript** - Programming languages
 
 ### Why React Native?
 
@@ -98,7 +98,6 @@ Through this project, I gained experience with:
 - **Mobile UI/UX design principles**
 - **Cross-platform development**
 - **Expo development workflow**
-- **Git version control**
 
 ## Future Improvements
 
