@@ -6,8 +6,6 @@ This ToDo App is a simple and intuitive task management application that helps y
 
 ### Key Features
 - ✅ Add new tasks
-- ✏️ Edit existing tasks
-- 🗑️ Delete completed tasks
 - ✔️ Mark tasks as completed
 - 📱 Modern and responsive user interface
 
