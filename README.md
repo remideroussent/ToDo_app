@@ -6,8 +6,6 @@ This ToDo App is a simple and intuitive task management application that helps y
 
 ### Key Features
 - ✅ Add new tasks
-- ✏️ Edit existing tasks
-- 🗑️ Delete completed tasks
 - ✔️ Mark tasks as completed
 - 📱 Modern and responsive user interface
 
@@ -19,7 +17,7 @@ This is my very first mobile application! This project allowed me to learn the b
 
 - **React Native** - Cross-platform mobile development framework
 - **Expo** - Development platform that simplifies React Native app creation
-- **JavaScript/TypeScript** - Programming languages
+- **JavaScript** - Programming languages
 
 ### Why React Native?
 
@@ -100,7 +98,6 @@ Through this project, I gained experience with:
 - **Mobile UI/UX design principles**
 - **Cross-platform development**
 - **Expo development workflow**
-- **Git version control**
 
 ## Future Improvements
 
