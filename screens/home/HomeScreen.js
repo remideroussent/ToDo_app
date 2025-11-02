@@ -1,7 +1,8 @@
-import { View, Text, TouchableOpacity, FlatList, Button } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Button} from 'react-native';
 import styles from '../../styles/styles.js';
 import { useState } from 'react';
 import { useAudioPlayer } from 'expo-audio';
+import { Swipeable } from 'react-native-gesture-handler';
 
 const audioSource = require("../../assets/audio/validation_audio.mp3"); // importe la source de l'audio que l'on veut utilisé
 
@@ -23,6 +24,14 @@ export default function HomeScreen({navigation, tasks, setTasks}) {
   let nb_done_tasks = tasks.filter(task => task.done).length; // .filter crée un nouveau tableau avec seulement les tâches qui sont dites comme done
   let nb_doing_tasks = tasks.length - nb_done_tasks;
 
+  const renderRightActions = () => (
+    <View style={styles.rightActionDeleteTask}>
+      <TouchableOpacity onPress={() => console.log("delete")}>
+        <Text>🗑️</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <About_me_button_title navigation={navigation}/>
@@ -32,25 +41,28 @@ export default function HomeScreen({navigation, tasks, setTasks}) {
         {tasks.length === 0 ? (
           <Text style={styles.noTask}>Vous n'avez actuellement aucune tâche en cours.  Au boulot !📝</Text>
         ) : (
-          <FlatList
+          <FlatList 
             data={tasks}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item, index}) => (
-              <View style={styles.taskRow}>
-                <TouchableOpacity style={[styles.notDoneButton, item.done && styles.doneButton]} onPress={() => {
-                  const alreadyPressed = pressedIndex.includes(index);
-                  indexPressed(index);
-                  if (!item.done){
-                    player.play();
-                    player.seekTo(0)
-                  }
-                  done_task_organisation(tasks, index, setTasks);
-                }}>
-                  {item.done && <Text style={styles.doneIcon}>✓</Text>}
-                  {/* ajout d'une flèche de validation quand la tâche est marquée comme terminée*/}
-                </TouchableOpacity>
-                <Text style={[styles.displayTask, item.done && styles.doneTask]}>{item.name}</Text>
-              </View>
+              <Swipeable renderRightActions={renderRightActions}>
+                {/* Swipeable sert à pouvoir swiper vers la droite ou la gauche et de faire une action comme delete une task */}
+                <View style={styles.taskRow}>
+                  <TouchableOpacity style={[styles.notDoneButton, item.done && styles.doneButton]} onPress={() => {
+                    const alreadyPressed = pressedIndex.includes(index);
+                    indexPressed(index);
+                    if (!item.done){
+                      player.play();
+                      player.seekTo(0)
+                    }
+                    done_task_organisation(tasks, index, setTasks);
+                  }}>
+                    {item.done && <Text style={styles.doneIcon}>✓</Text>}
+                    {/* ajout d'une flèche de validation quand la tâche est marquée comme terminée*/}
+                  </TouchableOpacity>
+                  <Text style={[styles.displayTask, item.done && styles.doneTask]}>{item.name}</Text>
+                </View>
+              </Swipeable>
             )}
           />
         )}

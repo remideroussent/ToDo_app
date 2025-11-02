@@ -156,4 +156,13 @@ export default StyleSheet.create({
     top: 200,
     alignSelf: 'center',
   },
+  rightActionDeleteTask: {
+    backgroundColor: '#C62828',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    flex: 1,
+    borderRadius: 8,
+    paddingRight: 10,
+    marginBottom: 2,
+  },
 });
